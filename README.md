@@ -75,6 +75,10 @@ Data was cleaned and transformed using **Power Query Editor**, including:
 
 ### DAX Formulas  
 ```DAX
-YTD Sales = TOTALYTD(SUM(Sales[Sales]), 'Date'[Date])
-QTD Sales = TOTALQTD(SUM(Sales[Sales]), 'Date'[Date])
-MTD Sales = TOTALMTD(SUM(Sales[Sales]), 'Date'[Date])
+Total MTD = TOTALMTD(SUM('SuperStore_Sales_Dataset for power bi'[Profit]),'SuperStore_Sales_Dataset for power bi'[Order Date])
+Total QTD = TOTALQTD(sum('SuperStore_Sales_Dataset for power bi'[Profit]),'SuperStore_Sales_Dataset for power bi'[Order Date])
+Total YTD = TOTALYTD(SUM('SuperStore_Sales_Dataset for power bi'[Profit]),'SuperStore_Sales_Dataset for power bi'[Order Date])
+Total Revenue = SUM('SuperStore_Sales_Dataset for power bi'[Profit])
+Data 2020 = FILTER('SuperStore_Sales_Dataset for power bi',YEAR('SuperStore_Sales_Dataset for power bi'[Order Date])=2020)
+Data 2019 = FILTER('SuperStore_Sales_Dataset for power bi',YEAR('SuperStore_Sales_Dataset for power bi'[Order Date])=2019)
+Sales Forecast = SUMMARIZE('SuperStore_Sales_Dataset for power bi','SuperStore_Sales_Dataset for power bi'[Order Date],"Total Sales",SUM('SuperStore_Sales_Dataset for power bi'[Sales]))
